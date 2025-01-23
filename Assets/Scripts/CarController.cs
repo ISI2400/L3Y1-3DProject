@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
     [Range(0,360f)] public float turnStrength = 180f;
     [Range(0,60f)] public float jumpHeight = 30f;
     [Range(0,20f)] public float gravityForce = 10f;
-    [Range(0,5f)] public float dragOnGround = 3f;
+    [Range(0,5f)] public float dragOnGround = 1f;
     private float speedInput, turnInput;
 
     [Header("Ground Check")]
@@ -98,13 +98,20 @@ public class CarController : MonoBehaviour
 
 
         if (grounded){
-            theRB.drag = dragOnGround;
+            theRB.drag = theRB.velocity.magnitude / maxSpeed;
 
             if (Mathf.Abs(speedInput) > 0) 
             {
                 theRB.AddForce(transform.forward * speedInput);
 
                 emissionRate = maxEmissionValue;
+
+                Debug.Log(theRB.velocity.magnitude);
+                
+                if (theRB.velocity.magnitude > maxSpeed){
+                    theRB.velocity = theRB.velocity.normalized * maxSpeed;
+                    Debug.Log(theRB.velocity.magnitude);
+                }
             }
         }
         else 

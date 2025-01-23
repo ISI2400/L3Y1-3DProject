@@ -104,6 +104,7 @@ Transform:
   - {fileID: 3549437742832267169}
   - {fileID: 9135405120289128986}
   - {fileID: 9180352423720416160}
+  - {fileID: 8868157242299110351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1628547093122003214
@@ -523,6 +524,7 @@ GameObject:
   - component: {fileID: 4987610371871892841}
   - component: {fileID: 1806015110516285962}
   - component: {fileID: 6406596091651275370}
+  - component: {fileID: 6741750843573335996}
   m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
@@ -643,6 +645,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6741750843573335996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609536546782550809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb26c1a810894b741acf5a742d41e06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastPos: {x: 0, y: 0, z: 0}
 --- !u!1 &5532718403462437253
 GameObject:
   m_ObjectHideFlags: 0
@@ -10327,6 +10342,53 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &7117529663826126109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8868157242299110351}
+  - component: {fileID: 7622330351886005433}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8868157242299110351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7117529663826126109}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.7495146, y: -13.089334, z: 27.392012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4342859470646020513}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7622330351886005433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7117529663826126109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2357a902e12e8724283fcd1cb7d086a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 8.5
+  timeLimit: 16.37
+  timertxt: {fileID: 3004079050796942455}
 --- !u!1 &8125826638324032396
 GameObject:
   m_ObjectHideFlags: 0
@@ -10511,12 +10573,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da425fbdf8c4a6646b7e538a069ede65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardAccel: 7.5
+  forwardAccel: 3
   reverseAccel: 4
-  maxSpeed: 100
-  turnStrength: 180
-  jumpHeight: 60
-  gravityForce: 10
+  maxSpeed: 50
+  turnStrength: 120
+  jumpHeight: 10
+  gravityForce: 7.5
   dragOnGround: 3
   whatisGround:
     serializedVersion: 2
