@@ -5,19 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/start scene.unity
-    guid: 3eb85b91f1f577246854884c3c540100
   - enabled: 1
-    path: Assets/Scenes/cavemap.unity
-    guid: 3854482b8b92f95479e0bfd26b7846fe
-  - enabled: 1
-    path: Assets/Scenes/Track.unity
-    guid: d2a9db2f2a41383409430dd2c5e32afe
+    path: Assets/Scenes/main menu.unity
+    guid: 555c446f29c18854dbcc7570043dd106
   - enabled: 1
     path: Assets/Scenes/asset creation.unity
     guid: 3ac936df69e945e4ab2a3f89d88278d4
   - enabled: 1
-    path: Assets/Scenes/main menu.unity
-    guid: 555c446f29c18854dbcc7570043dd106
+    path: Assets/Scenes/Track.unity
+    guid: d2a9db2f2a41383409430dd2c5e32afe
+  - enabled: 1
+    path: Assets/Scenes/cavemap.unity
+    guid: 3854482b8b92f95479e0bfd26b7846fe
   m_configObjects: {}

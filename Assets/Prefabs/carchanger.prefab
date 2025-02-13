@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6708122653255427156}
   - component: {fileID: 2299206193962398775}
+  - component: {fileID: 3571463862417452203}
   m_Layer: 0
   m_Name: carchanger
   m_TagString: Untagged
@@ -44,8 +45,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d07657b761ccdc44b52cc6ef7c7e7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnpoint: {x: 0, y: 0, z: 0}
+  spawnpoint: {x: -550, y: 5.14, z: 120}
   currentcar: {fileID: 0}
   spongecar: {fileID: 8605673474414892047, guid: 72a8207b8c7a2b24689a9d6c0a79910d,
     type: 3}
   racecar: {fileID: 1264317639930644385, guid: 111fa7cac68967a44a93669da529a835, type: 3}
+--- !u!114 &3571463862417452203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225360746344030754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2361a25fa1f7ae34f9c324a035adc097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  carselector: {fileID: 0}
+  menuactive: 0
