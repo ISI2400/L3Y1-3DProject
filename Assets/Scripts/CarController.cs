@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
 
-    private Rigidbody theRB; // this is the RigidBody that control everything. Do not touch.
+    public Rigidbody theRB; // this is the RigidBody that control everything. Do not touch.
 
     [Header("Car Attributes")]
     [Range(0,20f)] public float forwardAccel = 8f; 
@@ -16,12 +16,13 @@ public class CarController : MonoBehaviour
     [Range(0,20f)] public float gravityForce = 10f;
     [Range(0,5f)] public float dragOnGround = 1f;
     private float speedInput, turnInput;
+    public float resistance;
 
     [Header("Ground Check")]
     public LayerMask whatisGround;
     private bool grounded;
     public float groundRayLength = 0.5f;
-    private Transform groundRayPoint;
+    public Transform groundRayPoint;
 
     [Header("Wheels")]
     public float maxWheelTurn = 25f;
@@ -33,13 +34,17 @@ public class CarController : MonoBehaviour
     private ParticleSystem[] dustTrail;
     public float maxEmissionValue = 25f;
     private float emissionRate;
-    private GameObject particleHolder;
+    public GameObject particleHolder;
+
+    public AudioSource engine;
+    public GameObject audioholder;
+    public GameObject sphereholder;
 
 
     void Start()
     {
         theRB = gameObject.GetComponentInChildren<Rigidbody>(); //grabs the Rigidbody in the Sphere that is a child of the main gameObject.
-        theRB.transform.parent = null; //moves the sphere out of the parent into the root. 
+        theRB.transform.parent = sphereholder.transform; //moves the sphere out of the parent into the root. 
         groundRayPoint = GameObject.Find("ray point").transform; // finds the raycast point for grounded.
         particleHolder = GameObject.Find("Particle Holder"); // grabs the holder of the particles
 
@@ -53,15 +58,24 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
+        dustTrail = GetComponentsInChildren<ParticleSystem>();
+        sphereholder = GameObject.Find("sphereholder");
+        theRB.transform.parent = sphereholder.transform;
+        particleHolder = GameObject.Find("Particle Holder");
+        groundRayPoint = GameObject.Find("ray point").transform;
+        audioholder = GameObject.Find("Audio");
+        engine = audioholder.GetComponent<AudioSource>();
+
+        engine.pitch = 1 + (speedInput / 10000);
 
         speedInput = 0f;
         if (Input.GetAxis("Vertical") > 0) 
         {
-            speedInput = Input.GetAxis("Vertical") * forwardAccel * 1000f;
+            speedInput = Input.GetAxis("Vertical") * forwardAccel * 750f;
         }
         else if (Input.GetAxis("Vertical") < 0) 
         {
-            speedInput = Input.GetAxis("Vertical") * reverseAccel * 1000f;
+            speedInput = Input.GetAxis("Vertical") * reverseAccel * 750f;
         }
 
         if (Input.GetKeyDown("space") && grounded)
@@ -98,15 +112,20 @@ public class CarController : MonoBehaviour
 
 
         if (grounded){
-            theRB.drag = theRB.velocity.magnitude / maxSpeed;
 
             if (Mathf.Abs(speedInput) > 0) 
             {
+                theRB.drag = 0f;
+
                 theRB.AddForce(transform.forward * speedInput);
+
+                resistance = -theRB.velocity.magnitude / 40;
+
+                theRB.AddForce(transform.forward * speedInput * resistance);
 
                 emissionRate = maxEmissionValue;
 
-                Debug.Log(theRB.velocity.magnitude);
+
                 
                 if (theRB.velocity.magnitude > maxSpeed){
                     theRB.velocity = theRB.velocity.normalized * maxSpeed;
